@@ -1,12 +1,15 @@
-<?php
+﻿<?php
 
+$executed = false;
 if (isset($_POST['form1'])) {
 
 	if (isset($_POST['mail']) && isset($_POST['name'])) {
 
-		$email  = trim($_POST['email']);
+		$mail   = trim($_POST['mail']);
 		$name   = trim($_POST['name']);
-		$randId = rand(0, array(68, 130, 170, 187) - 1);
+		$idList = array(1, 2, 3);
+		$bumperCorrepondance = array("bouton central", "pied gauche", "pied droit");
+		$randId = rand(0,  count($idList) - 1);
 
 		try {
 
@@ -17,14 +20,10 @@ if (isset($_POST['form1'])) {
 			$u = $db->prepare('UPDATE emails SET Email_adress = :mail, Name = :name WHERE ID=:id');
 			$u->bindValue(':mail', $mail, PDO::PARAM_STR);
 			$u->bindValue(':name', $name, PDO::PARAM_STR);
-			$u->bindValue(':id', $randId, PDO::PARAM_INT);
+			$u->bindValue(':id', $idList[$randId], PDO::PARAM_INT);
 			$u->execute();
 
-			echo "
-			Bonjour ".htmlspecialchars($name).",<br />
-			Votre email porte le numéro : ".$randId.".<br /><br />
-			Merci d'indiquer à HAL l'image :";
-
+			$executed = true;
 		} catch(PDOException $error) {
 			echo "PDO ERROR CODE: ".$error->getCode();
 		}
@@ -35,14 +34,30 @@ if (isset($_POST['form1'])) {
 ?>
 
 <html>
-	<head>
-		<link rel="shortcut icon" href="favicon.ico" />
-	</head>
 	<body>
-		<form action="mail.php" method="post">
-			<p><label for="name">Votre nom : </label><input type="text" id="name" name="name" /></p>
-			<p><label for="mail">Votre mail : </label><input type="text" id="mail" name="mail" /></p>
-			<p><input type="submit" name="form1" value="Envoyer" /></p>
-		</form>
-	<body>
-<html>
+		<a href="javascript:history.go(-1)">Retour à la galerie</a>
+		<div id="centralBlock" style="width:400px; height:250px; border: 2px solid #000000; position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0;">
+			<div id="title" style="text-align: center;">
+				Inscription Naomaton
+			</div>
+			<div id="naoForm" style="text-align: center;">
+			<?php 
+				if(!$executed){
+					echo"<form action=\"mail.php\" method=\"post\">
+							<p>Votre Nom : <input type=\"text\" name=\"name\" /></p>
+							<p>Votre Email : <input type=\"text\" name=\"email\" /></p>
+							<p><input type=\"submit\" value=\"Envoyer\"></p>
+						</form>";
+				}
+				else{
+					echo "<br /> Bonjour ".htmlspecialchars($name).",<br />
+						Votre email porte le numéro : ".$idList[$randId].".<br /><br />
+						Toucher le ".$bumperCorrepondance[$randId]." d'HAL pour prendre votre photo.";
+					echo "<img src=\"images/".$idList[$randId].".png\" alt='Bumper' />";
+				}
+				
+			?>
+			</div>
+		<div>
+	</body>
+</html>

@@ -98,7 +98,7 @@
             </div>
         <?php endif; ?>
 		
-		<form action="email.php" method="post">
+		<form action="mail.php" method="post">
 			<p class="credit">Envie de recuperer votre photo par email? 
 				<input type=submit value="Inscription">
 			</p>
