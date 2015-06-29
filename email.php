@@ -10,6 +10,7 @@ if(isset($_POST['email']) && isset($_POST['email'])){
 	$result = $bdd->exec($request);
 	//print_r($result);
 	echo "<html>
+			<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 			<body>
 				".$name." Votre email porte le numéro: ".$array_email_id[$email_id]." .
 				Merci d'indiquer à HAL l'image: ".$request."
@@ -19,6 +20,7 @@ if(isset($_POST['email']) && isset($_POST['email'])){
 }
 else{
 	echo"<html>
+			<link rel=\"shortcut icon\" href=\"favicon.ico\" />
 			<body>
 				<form action=\"email.php\" method=\"post\">
 					<p>Votre Nom : <input type=\"text\" name=\"name\" /></p>
