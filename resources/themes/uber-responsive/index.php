@@ -4,7 +4,7 @@
 <head>
     <title>NaoMathon gallerie</title>
 
-    <link rel="shortcut icon" href="<?php echo THEMEPATH; ?>/img/favicon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css" />
