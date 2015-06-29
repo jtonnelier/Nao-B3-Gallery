@@ -27,22 +27,21 @@ if (isset($_POST['form1'])) {
 			$u->bindValue(':mail', $mail, PDO::PARAM_STR);
 			$u->bindValue(':name', $name, PDO::PARAM_STR);
 			$u->bindValue(':id', $listOfIds[$randomId], PDO::PARAM_INT);
-
-			$form = $u->execute() ? "
+			$u->execute();
+			
+			$form = "
 			<br />
 			Bonjour ".htmlspecialchars($name).",<br />
-			Votre email porte le numéro <big>".$listOfIds[$randomId].".<big><br />
+			Votre email porte le numéro <big>".$listOfIds[$randomId].".</big><br />
 			<br />
 			Touchez le ".$bumper[$randomId]." d'HAL pour prendre votre photo.<br />
 			<br />
-			<img src='./images".$listOfIds[$randomId].".png' alt='Bumper' />" :
-			"Une erreur est survenue, merci de ré-essayer dans un instant !";
+			<img src='./images/".$listOfIds[$randomId].".png' alt='Bumper' />";
 
 		} catch(PDOException $error) {
 			echo "PDO ERROR CODE: ".$error->getCode();
 		}
 	}
-	exit();
 }
 
 ?>
@@ -54,7 +53,7 @@ if (isset($_POST['form1'])) {
 		<style>
 			.nao {
 				width:400px;
-				height:250px;
+				height:400px;
 				border: 2px solid #000000;
 				position: absolute;
 				margin: auto;
