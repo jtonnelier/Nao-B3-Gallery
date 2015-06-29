@@ -97,8 +97,12 @@
                 </ul>
             </div>
         <?php endif; ?>
-
-		<p class="credit">Envie de recuperer votre photo par email? <a href="http://naomathon.fr/email.php">Inscription</a></p>
+		
+		<form action="email.php" method="post">
+			<p class="credit">Envie de recuperer votre photo par email? 
+				<input type=submit value="Inscription">
+			</p>
+		</form>
 
     </div>
 
