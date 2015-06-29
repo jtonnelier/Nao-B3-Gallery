@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title>NaoMaton gallerie</title>
+    <title>NaoMaton galerie</title>
 
     <link rel="shortcut icon" href="favicon.ico" />
 
@@ -28,7 +28,7 @@
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">
                 <div class="container">
-                    <div class="brand">NAOMATON Gallerie</div>
+                    <div class="brand">NAOMATON Galerie</div>
                 </div>
             </div>
         </div>
