@@ -14,7 +14,7 @@ if (isset($_POST['form1'])) {
 		$mail      = trim($_POST['mail']);
 		$name      = trim($_POST['name']);
 		$listOfIds = array(1, 2, 3);
-		$bumper    = array("bouton central", "pied gauche", "pied droit");
+		$bumper    = array("bouton tactile", "pied gauche", "pied droit");
 		$randomId  = rand(0,  count($listOfIds) - 1);
 
 		try {
